@@ -27,13 +27,20 @@ class Wagon {
    constructor (capacity, passengers) {
        this.capacity = capacity
        this.passengers = passengers
+
+       
+
    }
 
    getAvailableSeatCount () {
         // retorne o número de assentos vazios
-        let accents = this.capacity - this.passengers.length
-        console.log(accents)
-        return accents
+
+        // if (this.passengers > 0) {
+        //     this.capacity--
+        // }
+        
+        
+        return this.capacity
    }
 
    join () {
@@ -49,6 +56,17 @@ class Wagon {
 
    totalFood () {
        // retorna o total de comida de todos os ocupantes
+
+       let total = this.passengers
+       for (let i = 0; i < total.length; i++) {
+            console.log(i)           
+       }
+
+       console.log()
+       console.log('funcionou!!')
+
+
+    //    return Traveler.eat()
    }
 }
 
