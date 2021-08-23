@@ -1,75 +1,63 @@
 
 class Traveler {
-    constructor (name, amountFood, isHealthy) {
+    constructor (name) {
         this.name = name
-        this.amountFood = amountFood
-        this.isHealthy = isHealthy
+        this.amountFood = 1
+        this.isHealthy = true
     }
 
-    hunt (hunting) {
-        if (hunting === true) {
-            this.amountFood++
-        }
+    hunt () {
+        this.amountFood+= 2
     }
 
-    eat (eating) {
-        if (eating === true) {
-            if (this.amountFood === 0) {
-                this.isHealthy = false
-            } else {
-                this.amountFood--
-            }
+    eat () {
+        if (this.amountFood > 0) {
+            this.amountFood--
+        } else {
+            this.amountFood = 0
+            this.isHealthy = false
         }
     }
 }
 
 class Wagon {
-   constructor (capacity, passengers) {
-       this.capacity = capacity
-       this.passengers = passengers
+    constructor (capacity) {
+        this.capacity = capacity
+        this.passengers = new Array
+    }
 
-       
+    getAvailableSeatCount () {            
+        return this.capacity - this.passengers.length
+    }
 
-   }
+    join (hero) {
+            //se tiver espaço adicione
+        if (this.capacity - this.passengers.length > 0) {
+            this.passengers.push(hero)
+        }
+    }
 
-   getAvailableSeatCount () {
-        // retorne o número de assentos vazios
+    shouldQuarantine () {
+        // se tiver um viajante doente return true
+        for (let i = 0; i < this.passengers.length; i++) {
+            if (this.passengers[i].isHealthy === false) {
+                return true
+            }
+        }
+        return false
+    }
 
-        // if (this.passengers > 0) {
-        //     this.capacity--
-        // }
-        
-        
-        return this.capacity
-   }
-
-   join () {
-        //se tiver espaço adicione
-   }
-
-   shouldQuarantine () {
-       // se tiver um viajante doente return true
-       if (Traveler.isHealthy === false) {
-
-       }
-   }
-
-   totalFood () {
+    totalFood () {
        // retorna o total de comida de todos os ocupantes
-
-       let total = this.passengers
-       for (let i = 0; i < total.length; i++) {
-            console.log(i)           
-       }
-
-       console.log()
-       console.log('funcionou!!')
-
-
-    //    return Traveler.eat()
-   }
+        let totFood = 0
+        for (let i = 0; i < this.passengers.length; i++) {
+                
+            let quantFood = this.passengers[i].amountFood
+            totFood+=quantFood
+        }
+        return totFood
+    }
 }
-
 // function test () {
 //     let arrayTest = new Array
 //     console.log(arrayTest.length)
