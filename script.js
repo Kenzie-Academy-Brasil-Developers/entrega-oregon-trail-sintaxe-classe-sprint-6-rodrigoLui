@@ -58,13 +58,6 @@ class Wagon {
         return totFood
     }
 }
-// function test () {
-//     let arrayTest = new Array
-//     console.log(arrayTest.length)
-// }
-
-///////////////////////////////////////////////////////////////////////
-
 
 // Criar uma carroça que comporta 2 pessoas
 let wagon = new Wagon(2);
